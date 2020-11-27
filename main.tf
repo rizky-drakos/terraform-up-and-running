@@ -34,3 +34,13 @@ resource "aws_instance" "example" {
     Name = "terraform-example"
   }
 }
+
+output "public_ip" {
+  value = aws_instance.example.public_ip
+  description = "Public IP of the instance"
+}
+
+output "instance_id" {
+  value = aws_instance.example.id
+  description = "ID of the instance"
+}
