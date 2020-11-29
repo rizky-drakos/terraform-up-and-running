@@ -1,3 +1,6 @@
+/*
+  This template defines required resources for a single http server.
+*/
 provider "aws" {
   region = "ap-southeast-1"
 }
@@ -7,6 +10,7 @@ variable "server_port" {
   default = 80
 }
 
+# Enable http requests.
 resource "aws_security_group" "instance" {
   name = "terraform-example-instance"
   description = "Terraform example sg"
@@ -18,6 +22,7 @@ resource "aws_security_group" "instance" {
   }
 }
 
+# Include the default security group (sg-5d14ae2e) to enable SSH connection.
 resource "aws_instance" "example" {
   ami = "ami-07c4661e10b404bbb"
   instance_type = "t2.micro"
